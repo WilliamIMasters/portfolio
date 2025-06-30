@@ -17,7 +17,7 @@ class EasyTimeline extends StatelessWidget {
       width: 16,
       height: 16,
       decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.green),
-      child: Icon(Icons.check, color: Colors.white, size: 12)
+      child: Icon(Icons.circle, color: Colors.white, size: 12)
     );
     var theme = Theme.of(context);
     
@@ -26,18 +26,24 @@ class EasyTimeline extends StatelessWidget {
       children: points.map<Marker>((TimelinePoint point) {
         return Marker(
           icon: point.IsActive ? activeIcon : emptyIcon,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                point.Title,
-                style: theme.textTheme.titleLarge,
-              ),
-              if(point.AdditionalLines != null && point.AdditionalLines!.isNotEmpty) Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: point.AdditionalLines!.map<Widget>((text) {return Text(text, style: theme.textTheme.labelMedium);}).toList(),
-              ),
-            ],
+          child: Container(
+            width: 368,
+            //constraints: BoxConstraints(maxWidth: 380),
+            //color: Colors.yellow,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  point.Title,
+                  style: theme.textTheme.titleLarge,
+                ),
+                Text(point.SubTitle, style: theme.textTheme.titleMedium,),
+                if(point.AdditionalLines != null && point.AdditionalLines!.isNotEmpty) Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: point.AdditionalLines!.map<Widget>((text) {return Text(text, style: theme.textTheme.labelMedium);}).toList(),
+                ),
+              ],
+            ),
           ),
         );
       }).toList(),
@@ -47,8 +53,9 @@ class EasyTimeline extends StatelessWidget {
 
 class TimelinePoint {
   final String Title;
+  final String SubTitle;
   final List<String>? AdditionalLines;
   final bool IsActive;
 
-  TimelinePoint({required this.Title, this.AdditionalLines, this.IsActive = false});
+  TimelinePoint({required this.Title, required this.SubTitle, this.AdditionalLines, this.IsActive = false});
 }

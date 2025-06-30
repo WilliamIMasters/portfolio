@@ -9,17 +9,13 @@ class ExperienceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
 
-    var emptyIcon = Container(
-      width: 16,
-      height: 16,
-      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
-    );
     var points = [
-      TimelinePoint(Title: "Damarel Systems - Software Developer", AdditionalLines: ["Sept 2022 - Present"],IsActive: true),
-      TimelinePoint(Title: "The Redan - Bar Supervisor", AdditionalLines: ["Sept 2021 - Sept 2022"]),
+      TimelinePoint(Title: "Damarel Systems", SubTitle: "Software Developer", AdditionalLines: ["Sept 2022 - Present"],IsActive: true),
+      TimelinePoint(Title: "The Redan", SubTitle: "Bar Supervisor", AdditionalLines: ["Sept 2021 - Sept 2022"]),
+      TimelinePoint(Title: "University of Plymouth", SubTitle: "BSc - Computing and game development", AdditionalLines: ["2018-2022"]),
     ];
     return SectionCard(
-      title: "Experience",
+      title: "Experience And Education",
       icon: Icons.work,
       child: Column(
         children: [

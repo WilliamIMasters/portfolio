@@ -1,5 +1,6 @@
 import 'package:dev_icons/dev_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/util/technologies_helper.dart';
 import 'package:portfolio/widgets/property_info_card.dart';
 import 'package:portfolio/widgets/section_card.dart';
 import 'package:simple_icons/simple_icons.dart';
@@ -20,38 +21,58 @@ class TechnicalSkillsCard extends StatelessWidget {
           SizedBox(height: 16),
 
           Text("Languages:", style: theme.textTheme.headlineSmall),
-          Row(children: [
-            PropertyInfoCard(icon: DevIcons.csharpPlain, title: "C#", small: true),
-            PropertyInfoCard(icon: DevIcons.javascriptPlain, title: "JavaScript", small: true),
-            PropertyInfoCard(icon: DevIcons.dartPlain, title: "Dart", small: true),
-
-          ],),
-          Row(children: [
-            PropertyInfoCard(icon: DevIcons.oracleOriginal, title: "Oracle", small: true),
-            PropertyInfoCard(icon: DevIcons.mysqlPlain, title: "MySql", small: true),
-
-          ],),
+          TechnologyCardList(technologies: ["C#", "JavaScript", "Dart", "Oracle","MySql"]),
           SizedBox(height: 16),
 
           Text("Frameworks:", style: theme.textTheme.headlineSmall),
-          Row(children: [
-            PropertyInfoCard(icon: DevIcons.dotnetPlain, title: ".NET Framework", small: true),
-            PropertyInfoCard(icon: DevIcons.flutterPlain, title: "Flutter", small: true),
-            PropertyInfoCard(icon: DevIcons.reactOriginal, title: "React", small: true),
-            PropertyInfoCard(icon: DevIcons.nodejsPlain, title: "Node.js", small: true),
-          ],),
+          TechnologyCardList(technologies: [".NET Framework", "Flutter", "React", "Node.js"]),
           SizedBox(height: 16),
 
           Text("Tools:", style: theme.textTheme.headlineSmall),
-          Row(children: [
-            PropertyInfoCard(icon: DevIcons.githubOriginal, title: "Github", small: true),
-            PropertyInfoCard(icon: DevIcons.firebasePlain, title: "Firebase", small: true),
-            PropertyInfoCard(icon: DevIcons.godotPlain, title: "Godot", small: true),
-            PropertyInfoCard(icon: SimpleIcons.pocketbase, title: "PocketBase", small: true),
-          ],),
-          SizedBox(height: 16),
+          TechnologyCardList(technologies: ["Github", "Firebase", "Godot", "PocketBase", "PostMan"]),
         ],
       ),
+    );
+  }
+}
+
+class TechnologyCardList extends StatelessWidget {
+
+  final List<String> technologies;
+  const TechnologyCardList({
+    super.key,
+    required this.technologies
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      
+      children: technologies.map((t) => IntrinsicWidth(child: TechnologyCard(name: t))).toList()
+    );
+  }
+}
+
+class TechnologyCard extends StatelessWidget {
+
+  final String name;
+
+  const TechnologyCard({
+    super.key,
+    required this.name
+  });
+
+  @override
+  Widget build(BuildContext context) {
+
+    IconData getIcon() {
+      return TechnologiesHelper.getIcon(name);
+    }
+
+    return PropertyInfoCard(
+      icon: getIcon(),
+      title: name,
+      small: true,
     );
   }
 }

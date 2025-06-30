@@ -4,8 +4,8 @@ import 'package:portfolio/util/clipboard_helper.dart';
 
 class CopyableUrl extends StatelessWidget {
   final String url;
-  final String? name;
-  const CopyableUrl({super.key, required this.url, this.name});
+  final String? displayText;
+  const CopyableUrl({super.key, required this.url, this.displayText});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CopyableUrl extends StatelessWidget {
       child: InkWell(
         onTap: () => copyUrl(url, context),
         child: Text(
-          name ?? url,
+          displayText ?? url,
           style: TextStyle(
             color: Colors.blue,
             decoration: TextDecoration.underline,

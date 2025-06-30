@@ -7,8 +7,6 @@ class AboutMeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
     return SectionCard(
         title: "About Me",
         icon: Icons.person,

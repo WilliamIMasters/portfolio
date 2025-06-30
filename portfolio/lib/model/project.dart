@@ -6,7 +6,8 @@ class Project {
   final String description;
   final Color color;
   final List<String> toolsUsed;
+  final String? imagePath;
 
-  Project(this.title, this.description, this.color, this.toolsUsed);
+  Project(this.title, this.description, this.color, this.toolsUsed, {this.imagePath});
 
 }

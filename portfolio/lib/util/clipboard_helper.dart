@@ -18,7 +18,7 @@ class ClipboardHelper {
               ),
               dismissDirection: DismissDirection.horizontal,
               margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height - 64,
+                bottom: MediaQuery.of(context).size.height - 128,
                 right: 20,
                 left: MediaQuery.of(context).size.width - 200,
               ),
